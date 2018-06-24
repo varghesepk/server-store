@@ -1,0 +1,43 @@
+.server-store {
+    margin: 50px 10px;
+
+    table {
+        width: 100%;
+    }
+
+    .filter-form {
+        margin-bottom: 50px;
+    }
+
+    .data-table {
+        h1 {
+            width: 100%;
+            text-align: center;
+            color: blue;
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+    }
+}
+
+.container {
+    padding: 20px 0 60px;
+}
+.container button {
+    margin-right: 10px;
+}
+
+.container h1 {
+    color: blue;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+label.checkbox {
+    display: block;
+}
+
+label.checkbox ~ div {
+    display: inline-block;
+    margin-right: 20px;
+}

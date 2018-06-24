@@ -1,0 +1,96 @@
+<div class="server-store">
+  <div class="mat-elevation-z8">
+    <div class="filter-form">
+
+      <div class="container">
+        <div>
+          <h1>Filter by</h1>
+          <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+                <label class="center-block">Storage minimum:
+                  <input class="form-control" formControlName="storageMin">
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label class="center-block">Storage maximum:
+                  <input class="form-control" formControlName="storageMax">
+                </label>
+            </div>
+
+            <div class="form-group">
+              <label class="center-block">RAM:
+                <select class="form-control" formControlName="ram">
+                  <option *ngFor="let r of ramOptions" [value]="r.value">{{r.label}}</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label class="center-block">Hard Disk Type:
+                <select class="form-control" formControlName="hdd">
+                  <option *ngFor="let hdd of hddOptions" [value]="hdd">{{hdd}}</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label class="center-block">Location:
+                <select class="form-control" formControlName="location">
+                  <option *ngFor="let location of locations" [value]="location">{{location}}</option>
+                </select>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="filterForm.pristine">Filter</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="data-table">
+    <h1>Server List</h1>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+
+        <!-- Model Column -->
+        <ng-container matColumnDef="model">
+          <th mat-header-cell *matHeaderCellDef> Model </th>
+          <td mat-cell *matCellDef="let element"> {{element.model}} </td>
+        </ng-container>
+
+        <!-- RAM Column -->
+        <ng-container matColumnDef="ram">
+          <th mat-header-cell *matHeaderCellDef> RAM </th>
+          <td mat-cell *matCellDef="let element"> {{element.ram.memory + element.ram.unit + element.ram.type}} </td>
+        </ng-container>
+
+        <!-- HDD Column -->
+        <ng-container matColumnDef="hdd">
+          <th mat-header-cell *matHeaderCellDef> HDD </th>
+          <td mat-cell *matCellDef="let element"> {{element.hdd.count + 'x' + element.hdd.memory + element.hdd.unit + element.hdd.type}} </td>
+        </ng-container>
+
+        <!-- Location Column -->
+        <ng-container matColumnDef="location">
+          <th mat-header-cell *matHeaderCellDef> Location </th>
+          <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+        </ng-container>
+
+        <!-- Price Column -->
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef> Price </th>
+          <td mat-cell *matCellDef="let element"> {{element.price.currencySymbol}}{{element.price.amountCents / 100}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+
+  </div>
+
+</div>

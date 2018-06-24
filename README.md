@@ -1,5 +1,7 @@
 # ServerStore
 
+The idea is to have a single page application built with Angular with the list of servers with the possibility to reduce the list using the filters as shown in the following table.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
 ## Development server
